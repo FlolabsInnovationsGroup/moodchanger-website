@@ -13,7 +13,7 @@ export default function PeoplePage() {
             MoodChanger for People
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/80 lg:text-xl">
-            Understand your mood. See what really affects how you feel.
+            Your 24/7 AI support system with personalized insights from real-time and historical data. Understand your patterns, manage stress, and prevent chronic disease with proactive health tracking.
           </p>
         </div>
       </section>
@@ -24,13 +24,13 @@ export default function PeoplePage() {
           {/* Description */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-2xl font-semibold text-white lg:text-3xl">
-              More Than Just Tracking
+              Your Virtual Coach & Companion
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-white/70 leading-relaxed">
-              MoodChanger learns your patterns—mood, sleep, routine, environment—and shows you connections you&rsquo;d never see alone.
+              CAIPO acts as your personal AI assistant, analyzing data from wearables to give you personalized insights, proactive nudges, and celebrate your milestones—all while managing stress and supporting chronic disease prevention.
             </p>
             <div className="mt-6 text-[#FDE035] font-medium">
-              Daily check-ins + passive signals → Insights you can act on.
+              Real-time data + AI insights → Actionable wellness recommendations
             </div>
           </div>
 
@@ -211,15 +211,9 @@ export default function PeoplePage() {
             </p>
           </div>
           
-          <a 
-            href="mailto:hello@moodchanger.ai?subject=Early Access Interest - People"
-            className="inline-flex items-center gap-3 rounded-full bg-[#FDE035] px-8 py-4 text-lg font-semibold text-[#2aa68a] transition-all duration-300 hover:bg-[#FDE035]/90 hover:scale-105"
-          >
-            Get Early Access
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
+          <div className="inline-flex items-center gap-3 rounded-full bg-[#FDE035]/50 px-8 py-4 text-lg font-semibold text-[#0d2430]/70 cursor-not-allowed">
+            Coming Soon
+          </div>
         </div>
       </section>
     </PageLayout>

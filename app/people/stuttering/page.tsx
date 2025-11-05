@@ -105,15 +105,9 @@ export default function StutteringPage() {
 
           {/* CTA */}
           <div className="text-center">
-            <a 
-              href="mailto:hello@moodchanger.ai?subject=Early Access Interest - Stuttering"
-              className="inline-flex items-center gap-3 rounded-full bg-[#FDE035] px-8 py-4 text-lg font-semibold text-[#2aa68a] transition-all duration-300 hover:bg-[#FDE035]/90 hover:scale-105"
-            >
-              Get Early Access
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <div className="inline-flex items-center gap-3 rounded-full bg-[#FDE035]/50 px-8 py-4 text-lg font-semibold text-[#0d2430]/70 cursor-not-allowed">
+              Coming Soon
+            </div>
           </div>
         </div>
       </section>
