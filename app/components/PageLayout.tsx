@@ -41,8 +41,6 @@ export default function PageLayout({ children }: PageLayoutProps) {
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-8 py-16 text-sm text-white/70 md:flex-row">
           <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} MoodChanger.AI</span>
-            <span className="text-white/50">•</span>
             <span>A</span>
             <Link
               href="https://flomadlabs.com"
