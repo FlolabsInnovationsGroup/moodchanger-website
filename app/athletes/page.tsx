@@ -13,7 +13,7 @@ export default function AthletesPage() {
             MoodChanger for Athletes
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/80 lg:text-xl">
-            Train your mind as precisely as your body. Peak performance starts with understanding your patterns.
+            Train your mind as precisely as your body. Get real-time performance insights, personalized training plans, and mental preparation tools powered by AI and integrated wearable data.
           </p>
         </div>
       </section>
@@ -24,13 +24,13 @@ export default function AthletesPage() {
           {/* Description */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-2xl font-semibold text-white lg:text-3xl">
-              Beyond Physical Training
+              AI-Powered Athletic Performance
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-white/70 leading-relaxed">
-              MoodChanger helps athletes understand the mental patterns that affect performance—sleep quality, stress levels, recovery patterns, and pre-competition routines.
+              CAIPO analyzes data from smart glasses, EEG hardware, smart rings, watches, and more to optimize your mental performance, reduce fatigue, and create personalized training plans that adapt to your body and mind.
             </p>
             <div className="mt-6 text-[#FDE035] font-medium">
-              Mental preparation + Performance tracking → Consistent peak performance.
+              Real-time biometrics + AI analysis → Peak performance optimization
             </div>
           </div>
 
@@ -226,15 +226,9 @@ export default function AthletesPage() {
             </p>
           </div>
           
-          <a 
-            href="mailto:hello@moodchanger.ai?subject=Early Access Interest - Athletes"
-            className="inline-flex items-center gap-3 rounded-full bg-[#FDE035] px-8 py-4 text-lg font-semibold text-[#2aa68a] transition-all duration-300 hover:bg-[#FDE035]/90 hover:scale-105"
-          >
-            Get Early Access
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
+          <div className="inline-flex items-center gap-3 rounded-full bg-[#FDE035]/50 px-8 py-4 text-lg font-semibold text-[#0d2430]/70 cursor-not-allowed">
+            Coming Soon
+          </div>
           
           <div className="mt-8">
             <Link 
