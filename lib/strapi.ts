@@ -195,6 +195,8 @@ export interface FeatureData {
 }
 
 export interface UseCaseData {
+  id: number;
+  documentId: string;
   title: string;
   slug: string;
   description: string;
@@ -203,6 +205,8 @@ export interface UseCaseData {
 }
 
 export interface SubCategoryData {
+  id: number;
+  documentId: string;
   title: string;
   slug: string;
   description?: string;
