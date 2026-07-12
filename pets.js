@@ -18,7 +18,8 @@
     var feats = [].slice.call(list.querySelectorAll('.vfeat'));
     var imgs = [].slice.call(document.querySelectorAll('.vision-media .vision-img'));
     var n = feats.length, cur = 0, timer = null;
-    var DUR = 4200;
+    var DUR = 6000;
+    var canHover = window.matchMedia && window.matchMedia('(hover:hover)').matches;
 
     function set(idx) {
       cur = (idx + n) % n;
@@ -34,6 +35,8 @@
 
     feats.forEach(function (f, k) {
       f.addEventListener('click', function () { set(k); play(); });
+      if (canHover) f.addEventListener('mouseenter', function () { set(k); stop(); });
+      if (canHover) f.addEventListener('mouseleave', function () { play(); });
     });
     set(0);
 
@@ -53,7 +56,8 @@
     var tabs = [].slice.call(show.querySelectorAll('.dev-tab'));
     var bgs = [].slice.call(show.querySelectorAll('.dev-bg'));
     var n = tabs.length, cur = 0, timer = null;
-    var DUR = 4600;
+    var DUR = 7000;
+    var canHover = window.matchMedia && window.matchMedia('(hover:hover)').matches;
 
     function set(idx) {
       cur = (idx + n) % n;
@@ -64,7 +68,9 @@
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
     tabs.forEach(function (t, k) {
-      t.addEventListener('click', function () { set(k); });
+      t.addEventListener('click', function () { set(k); play(); });
+      if (canHover) t.addEventListener('mouseenter', function () { set(k); stop(); });
+      if (canHover) t.addEventListener('mouseleave', function () { play(); });
     });
     set(0);
 

@@ -64,10 +64,12 @@
     var header = document.querySelector('[data-header]');
     var bar = document.querySelector('.progress');
     var back = document.querySelector('.backhome');
+    var topBtn = document.querySelector('.to-top');
     function onScroll() {
       var y = window.scrollY || window.pageYOffset;
       if (header) header.classList.toggle('scrolled', y > 30);
       if (back) back.classList.toggle('show', y > window.innerHeight * 0.9);
+      if (topBtn) topBtn.classList.toggle('show', y > window.innerHeight * 0.6);
       if (bar) {
         var h = document.documentElement.scrollHeight - window.innerHeight;
         bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
@@ -75,24 +77,29 @@
     }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+    if (topBtn) topBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
   /* ---------- Tracking meter sync ---------- */
   function initMeter() {
-    var steps = [].slice.call(document.querySelectorAll('.step'));
-    var segs = [].slice.call(document.querySelectorAll('.meter span'));
-    if (!steps.length || !segs.length) return;
-    function update() {
-      var vh = window.innerHeight;
-      var active = -1;
+    var groups = [].slice.call(document.querySelectorAll('.track-grid'));
+    groups.forEach(function (grid) {
+      var steps = [].slice.call(grid.querySelectorAll('.step'));
+      var segs = [].slice.call(grid.querySelectorAll('.meter span'));
+      if (!steps.length) return;
+      function setActive(idx) {
+        steps.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+        segs.forEach(function (seg, i) { seg.classList.toggle('on', i <= idx); });
+      }
       steps.forEach(function (s, i) {
-        var r = s.getBoundingClientRect();
-        if (r.top < vh * 0.6) active = i;
+        s.addEventListener('mouseenter', function () { if (window.matchMedia('(hover:hover)').matches) setActive(i); });
+        s.addEventListener('click', function () { setActive(i); });
       });
-      segs.forEach(function (seg, i) { seg.classList.toggle('on', i <= active); });
-    }
-    update();
-    window.addEventListener('scroll', update, { passive: true });
+      setActive(0);
+    });
   }
 
   /* ---------- Mobile nav ---------- */
@@ -187,7 +194,31 @@
     });
   }
 
-  function init(){ initReveals(); initParallax(); initScrollChrome(); initMeter(); initNav(); initCarousel(); initVideo(); initHowTabs();
+  /* ---------- Theme toggle (light / dark, persisted) ---------- */
+  function initTheme() {
+    var root = document.documentElement;
+    var KEY = 'mc-theme';
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved !== 'light' && saved !== 'dark') saved = 'light';
+    apply(saved);
+    function apply(t) {
+      root.setAttribute('data-theme', t);
+      [].slice.call(document.querySelectorAll('[data-theme-toggle]')).forEach(function (b) {
+        b.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+        b.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      });
+    }
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-theme-toggle]');
+      if (!btn) return;
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  }
+
+  function init(){ initTheme(); initReveals(); initParallax(); initScrollChrome(); initMeter(); initNav(); initCarousel(); initVideo(); initHowTabs();
     var y = document.querySelector('[data-year]'); if (y) y.textContent = new Date().getFullYear(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

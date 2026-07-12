@@ -83,27 +83,27 @@ body.wear-body{background:var(--ink)}
 /* ============================================================
    DETAIL VIEW (same layout + background for every wearable)
    ============================================================ */
-.detail{position:fixed; inset:0; z-index:950; background:var(--paper); color:var(--ink); overflow-y:auto; overscroll-behavior:contain;
+.detail{position:fixed; inset:0; z-index:950; background:var(--surface); color:var(--text); overflow-y:auto; overscroll-behavior:contain;
   transform:translateY(2.5%); opacity:0; visibility:hidden; pointer-events:none;
   transition:transform .6s var(--ease), opacity .5s var(--ease), visibility .6s}
 .detail.open{transform:none; opacity:1; visibility:visible; pointer-events:auto}
 
 .detail-bar{position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:18px;
-  background:rgba(255,255,255,.82); backdrop-filter:blur(18px) saturate(1.2); border-bottom:1px solid var(--line-l)}
+  background:color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter:blur(18px) saturate(1.2); border-bottom:1px solid var(--line)}
 .detail-bar .row{width:min(var(--maxw),92vw); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:15px 0}
 .detail-close{display:inline-flex; align-items:center; gap:10px; cursor:pointer; background:transparent; border:0; font-family:inherit;
-  font-size:.94rem; font-weight:600; color:var(--ink); padding:9px 12px; border-radius:10px; transition:background .25s}
-.detail-close:hover{background:var(--paper-3)}
+  font-size:.94rem; font-weight:600; color:var(--text); padding:9px 12px; border-radius:10px; transition:background .25s}
+.detail-close:hover{background:var(--surface-2)}
 .detail-close svg{width:18px; height:18px}
 .detail-where{display:flex; align-items:baseline; gap:12px; min-width:0}
-.detail-where .ix{font-size:.82rem; font-weight:700; letter-spacing:.12em; color:var(--yellow-deep)}
+.detail-where .ix{font-size:.82rem; font-weight:700; letter-spacing:.12em; color:var(--yellow)}
 .detail-where .nm{font-size:1.04rem; font-weight:600; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .detail-arrows{display:flex; align-items:center; gap:10px}
-.dbtn{width:46px; height:46px; border-radius:50%; display:grid; place-items:center; cursor:pointer; background:var(--paper);
-  border:1px solid var(--line-l); color:var(--ink); transition:.28s var(--ease)}
-.dbtn:hover{border-color:var(--ink); transform:translateY(-1px)}
+.dbtn{width:46px; height:46px; border-radius:50%; display:grid; place-items:center; cursor:pointer; background:var(--surface);
+  border:1px solid var(--line); color:var(--text); transition:.28s var(--ease)}
+.dbtn:hover{border-color:var(--text); transform:translateY(-1px)}
 .dbtn svg{width:18px; height:18px}
-.dbtn.next{background:var(--ink); border-color:var(--ink); color:#fff}
+.dbtn.next{background:var(--chip-bg); border-color:var(--chip-bg); color:var(--chip-text)}
 .dbtn.next:hover{background:var(--ink-2)}
 
 .detail-stage{position:relative}
@@ -120,24 +120,24 @@ body.wear-body{background:var(--ink)}
   background:linear-gradient(180deg, rgba(8,20,28,.3), rgba(8,20,28,.05) 38%, rgba(8,20,28,.55) 78%, rgba(8,20,28,.9))}
 .dp-headtext{position:relative; z-index:2; width:min(var(--maxw),92vw); margin-inline:auto; padding:clamp(40px,6vw,72px) 0}
 .dp-title{font-size:clamp(2.6rem,6.4vw,5rem); font-weight:600; letter-spacing:-.04em; line-height:.96; text-wrap:balance}
-.dp-intro{margin-top:22px; max-width:64ch; font-size:clamp(1.08rem,1.5vw,1.4rem); line-height:1.6; color:rgba(255,255,255,.92)}
+.dp-intro{margin-top:22px; max-width:none; font-size:clamp(1.08rem,1.5vw,1.4rem); line-height:1.6; color:rgba(255,255,255,.92)}
 .dp-intro .caipo{color:#c39bf2; font-weight:600}
 
 .dp-body{width:min(var(--maxw),92vw); margin-inline:auto; padding:clamp(54px,7vw,100px) 0 clamp(80px,10vw,130px)}
 
 /* reuse the MoodChanger beat, capability + application styles from before */
 /* ---- "+ MoodChanger" — free-flowing text, no frame; only the tagline is a dark pill ---- */
-.wear-mc{position:relative; background:none; border:0; border-radius:0; padding:0; box-shadow:none; color:var(--ink); overflow:visible}
+.wear-mc{position:relative; background:none; border:0; border-radius:0; padding:0; box-shadow:none; color:var(--text); overflow:visible}
 .wear-mc::before{display:none}
 .wear-mc .mc-grid{display:none}
-.wear-mc-inner{position:relative; z-index:1; max-width:74ch}
-.wear-mc-title{font-size:clamp(1.7rem,3.1vw,2.7rem); font-weight:600; letter-spacing:-.03em; line-height:1.04; color:var(--ink)}
-.wear-mc-title .plus{color:var(--yellow-deep)}
-.wear-mc-body{margin-top:22px; font-size:clamp(1.1rem,1.5vw,1.34rem); line-height:1.6; color:#22323a; font-weight:400}
+.wear-mc-inner{position:relative; z-index:1; max-width:none}
+.wear-mc-title{font-size:clamp(1.7rem,3.1vw,2.7rem); font-weight:600; letter-spacing:-.03em; line-height:1.04; color:var(--text)}
+.wear-mc-title .plus{color:var(--yellow)}
+.wear-mc-body{margin-top:22px; font-size:clamp(1.1rem,1.5vw,1.34rem); line-height:1.6; color:var(--text-muted); font-weight:400}
 .wear-mc-body .caipo{color:var(--caipo); font-weight:600}
 .wear-tagline{margin-top:clamp(28px,3.4vw,40px); display:flex; align-items:center; gap:15px; width:100%;
   padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,30px); border-radius:18px; border:0;
-  background:var(--ink); color:#fff; font-size:clamp(1.02rem,1.4vw,1.22rem); font-weight:600; line-height:1.4;
+  background:var(--chip-bg); color:var(--chip-text); font-size:clamp(1.02rem,1.4vw,1.22rem); font-weight:600; line-height:1.4;
   box-shadow:0 26px 54px -36px rgba(13,36,48,.45)}
 .wear-tagline::before{content:""; flex:none; width:10px; height:10px; border-radius:50%; background:var(--yellow)}
 .wear-tagline .ar{color:var(--yellow); font-weight:700; padding:0 .3em; font-size:1.12em; line-height:1}
@@ -145,7 +145,7 @@ body.wear-body{background:var(--ink)}
 /* section subtitles — bigger + bold */
 .wear-block{margin-top:clamp(52px,6vw,88px)}
 .block-head{display:flex; align-items:center; gap:22px; margin-bottom:clamp(26px,3vw,38px)}
-.block-head .eyebrow{font-size:clamp(1.5rem,2.5vw,2.05rem); font-weight:700; letter-spacing:-.022em; text-transform:none; color:var(--ink)}
+.block-head .eyebrow{font-size:clamp(1.5rem,2.5vw,2.05rem); font-weight:700; letter-spacing:-.022em; text-transform:none; color:var(--text)}
 .block-head .eyebrow::before{display:none}
 .block-head .ln{flex:1; height:1px; background:var(--line-l)}
 
@@ -167,7 +167,7 @@ body.wear-body{background:var(--ink)}
 /* ---- Features & Applications — white boxes ---- */
 .app-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(16px,2vw,24px)}
 .app{position:relative; display:flex; gap:20px; align-items:flex-start; overflow:hidden;
-  background:#fff; color:var(--ink); border:1px solid var(--line-l); border-radius:20px; padding:clamp(26px,2.6vw,36px);
+  background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:20px; padding:clamp(26px,2.6vw,36px);
   box-shadow:0 18px 44px -34px rgba(13,36,48,.22);
   transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s}
 .app:hover{transform:translateY(-5px); box-shadow:0 38px 66px -40px rgba(13,36,48,.3); border-color:#d4dad3}
@@ -176,8 +176,8 @@ body.wear-body{background:var(--ink)}
 .app:hover .app-ic{transform:translateY(-3px)}
 .app-ic svg{width:25px; height:25px}
 .app-txt{position:relative; z-index:1}
-.app h4{font-size:clamp(1.18rem,1.7vw,1.45rem); font-weight:700; letter-spacing:-.02em; color:var(--ink)}
-.app p{margin-top:11px; font-size:1.02rem; line-height:1.6; color:var(--muted-l)}
+.app h4{font-size:clamp(1.18rem,1.7vw,1.45rem); font-weight:700; letter-spacing:-.02em; color:var(--text)}
+.app p{margin-top:11px; font-size:1.02rem; line-height:1.6; color:var(--text)}
 
 /* lock body scroll while the detail view is open */
 body.detail-open{overflow:hidden}
@@ -186,7 +186,7 @@ body.detail-open{overflow:hidden}
 .showcase{ }
 .showcase::after{content:""; position:absolute; left:0; right:0; bottom:0; z-index:2; pointer-events:none;
   height:clamp(150px,22vh,260px); background:linear-gradient(180deg, transparent 0%, rgba(10,26,34,.55) 55%, var(--ink) 100%)}
-.wear-body .site-footer{border-top:0; background:linear-gradient(180deg, var(--ink) 0%, var(--ink-brand) 100%)}
+.wear-body .site-footer{border-top:0; background:#000}
 
 /* ============================================================
    RESPONSIVE

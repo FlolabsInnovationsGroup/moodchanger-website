@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MoodChanger.ai</title>
+<script>(function(){try{var t=localStorage.getItem('mc-theme');document.documentElement.setAttribute('data-theme',(t==='dark'||t==='light')?t:'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +22,6 @@
       <img class="mark" src="assets/flomadlogo.svg" alt="">
       <span class="word">Mood<span class="a">Changer</span>.ai</span>
     </a>
-
     <button class="burger" data-nav-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
 
     <nav class="nav" data-nav aria-label="Primary">
@@ -74,6 +74,12 @@
 
       <div class="item"><a href="Athletes.html">Athletes</a></div>
       <div class="item"><a href="Pets.html">Pets</a></div>
+      <div class="item theme-item">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </nav>
   </div>
 </header>
@@ -92,7 +98,7 @@
   </section>
 
   <!-- ============================================================ CHALLENGE -->
-  <section class="band paper" id="challenge">
+  <section class="band dark" id="challenge">
     <div class="wrap">
       <div class="challenge">
         <div class="challenge-aside">
@@ -134,7 +140,7 @@
   <section class="band dark" id="solution">
     <div class="wrap">
       <div class="section-head center">
-        <h2 class="reveal">The MoodChanger <span style="color:var(--yellow)">Solution</span></h2>
+        <h2 class="reveal">The MoodChanger <span style="color:var(--yellow);font-weight:800">Solution</span></h2>
         <p class="sub reveal" data-delay="120"><span style="color:var(--caipo);font-weight:600">CAIPO</span> and MoodChanger work together to provide intelligent, personalized support.</p>
       </div>
 
@@ -235,16 +241,71 @@
 </main>
 
 <!-- ============================================================ FOOTER -->
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <a class="brand" href="#top"><img class="mark" src="assets/flomadlogo.svg" alt="" style="width:34px;height:34px"><span class="word">Mood<span class="a">Changer</span>.ai</span></a>
-    <p>A <a class="lk" href="https://www.flolabsinnovations.com/" target="_blank" rel="noopener">Flo Labs</a> product</p>
-    <p>Powered by <a href="https://caipo.ai" target="_blank" rel="noopener" class="caipo">CAIPO</a></p>
-    <p class="fine"><span class="caipo">CAIPO</span> is the intelligent layer that helps MoodChanger understand patterns in your daily life.</p>
+<footer class="site-footer mc-footer">
+  <div class="wrap mcf-grid">
+    <div class="mcf-brand">
+      <div class="mcf-head">
+        <img class="mcf-logo" src="assets/flomadlogo.svg" alt="MoodChanger logo">
+        <div class="mcf-title">
+          <strong>MoodChanger.ai</strong>
+          <span>| by FloLabs Innovations Group</span>
+        </div>
+      </div>
+      <p class="mcf-desc">Transforming your wellbeing, one insight at a time. All your AI in one app, powered by FloBrain, to boost productivity, wellness, and lifestyle.</p>
+      <h4 class="mcf-h">Newsletter</h4>
+      <p class="mcf-sub">Receive the newest FloLabs updates at:</p>
+      <form class="mcf-news" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email..." aria-label="Email address">
+        <button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+      </form>
+      <h4 class="mcf-h">Social Media</h4>
+      <div class="mcf-social">
+        <a href="https://www.youtube.com/@flolabsinnovation" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.4 3.6 12 3.6 12 3.6s-4.4 0-7.7.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.3 7.6.3s4.4 0 7.7-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 15.1V8.4l6.2 3.4-6.2 3.3z"></path></svg></a>
+        <a href="https://www.linkedin.com/company/flolabs-innovation/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.2 8h4.6v14.7H.2V8zm7.6 0h4.4v2h.1c.6-1.2 2.1-2.4 4.4-2.4 4.7 0 5.6 3.1 5.6 7.1v8H17.7v-7.1c0-1.7 0-3.9-2.4-3.9s-2.7 1.8-2.7 3.7v7.3H7.8V8z"></path></svg></a>
+      </div>
+    </div>
+
+    <nav class="mcf-col" aria-label="Footer navigation">
+      <h4 class="mcf-h">Navigation</h4>
+      <a href="Home.html">Home</a>
+      <a href="Wearables.html">Wearables</a>
+      <a href="SmartDevices.html">Smart Devices</a>
+      <a href="People.html">People</a>
+      <a href="Athletes.html">Athletes</a>
+      <a href="Pets.html">Pets</a>
+    </nav>
+
+    <nav class="mcf-col" aria-label="FloLabs projects">
+      <h4 class="mcf-h">Projects</h4>
+      <a href="https://www.athleticperformanceintelligence.com/" target="_blank" rel="noopener">Athletic Performance Intelligence</a>
+      <a href="https://www.caipo.ai/" target="_blank" rel="noopener">CAIPO</a>
+      <a href="http://cosmosintelligence.org/" target="_blank" rel="noopener">Cosmos Intelligence</a>
+      <a href="https://www.youtube.com/@flolabsinnovation" target="_blank" rel="noopener">Connecting the Dots</a>
+      <a href="https://www.flomadtravel.com/" target="_blank" rel="noopener">Flo Travel</a>
+      <a href="https://www.flobrain.ai/" target="_blank" rel="noopener">FloBrain</a>
+      <a href="https://www.flolabsinnovations.com/" target="_blank" rel="noopener">FloLabs Innovations Group</a>
+      <a href="https://www.flolabs.international/" target="_blank" rel="noopener">FloLabs International</a>
+      <a href="https://www.flostudios.ai/" target="_blank" rel="noopener">FloStudios</a>
+      <a href="https://hephaestus.international/" target="_blank" rel="noopener">Hepheastus International</a>
+      <a href="https://www.bootcampuniversity.org/" target="_blank" rel="noopener">Innovation Bootcamp University</a>
+      <a href="https://www.moodchanger.ai/" target="_blank" rel="noopener">MoodChanger</a>
+      <a href="https://www.legalethicsventuresinstitute.com/" target="_blank" rel="noopener">Legal &amp; Ethics Ventures Institute</a>
+      <a href="https://www.robocollective.ai/" target="_blank" rel="noopener">RoboCollective</a>
+      <a href="https://www.spaceventuresinstitute.com/" target="_blank" rel="noopener">Space Ventures Institute</a>
+      <a href="https://tarrl.org/" target="_blank" rel="noopener">TARRL</a>
+    </nav>
+
+    <nav class="mcf-col" aria-label="Company">
+      <h4 class="mcf-h">Company</h4>
+      <a href="https://www.flolabsinnovations.com/" target="_blank" rel="noopener">Careers</a>
+      <a href="https://www.flolabsinnovations.com/" target="_blank" rel="noopener">Contact Us</a>
+      <a href="https://flolabsrd.notion.site/merch-background" target="_blank" rel="noopener">Merch</a>
+    </nav>
   </div>
+  <div class="mcf-bar">Live Long and Prosper</div>
 </footer>
 
-<a class="backhome" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Top</a>
+<a class="to-top" href="#top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Top</a>
 
 <script src="athletes.js"></script>
 </body>

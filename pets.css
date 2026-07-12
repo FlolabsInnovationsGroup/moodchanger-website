@@ -16,7 +16,7 @@
     radial-gradient(74% 66% at 12% 88%, rgba(157,82,235,.13), transparent 62%),
     linear-gradient(180deg, var(--ink-brand) 0%, var(--ink) 72%)}
 .hero.pets .hero-media .grid-bg{position:absolute; inset:0; opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-image:linear-gradient(var(--card) 1px,transparent 1px),linear-gradient(90deg,var(--card) 1px,transparent 1px);
   background-size:64px 64px;
   -webkit-mask-image:radial-gradient(120% 100% at 72% 12%, #000, transparent 76%);
           mask-image:radial-gradient(120% 100% at 72% 12%, #000, transparent 76%)}
@@ -45,7 +45,7 @@
     radial-gradient(74% 66% at 12% 88%, rgba(157,82,235,.13), transparent 62%),
     linear-gradient(180deg, var(--ink-brand) 0%, var(--ink) 70%)}
 .pets-hero .grid-bg{position:absolute; inset:0; z-index:0; opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-image:linear-gradient(var(--card) 1px,transparent 1px),linear-gradient(90deg,var(--card) 1px,transparent 1px);
   background-size:64px 64px;
   -webkit-mask-image:radial-gradient(120% 100% at 72% 12%, #000, transparent 76%);
           mask-image:radial-gradient(120% 100% at 72% 12%, #000, transparent 76%)}
@@ -77,7 +77,7 @@
 .embed-bar .live .dot{width:8px; height:8px; border-radius:50%; background:var(--yellow); animation:livePulse 1.8s var(--ease) infinite}
 @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.embed-bar .live .dot{animation:none}}
-.embed-bar .open{display:inline-flex; align-items:center; gap:9px; font-size:.88rem; font-weight:600; color:var(--ink);
+.embed-bar .open{display:inline-flex; align-items:center; gap:9px; font-size:.88rem; font-weight:600; color:var(--text);
   background:var(--yellow); padding:10px 18px; border-radius:999px; transition:transform .3s var(--ease), box-shadow .3s var(--ease)}
 .embed-bar .open:hover{transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(253,224,53,.7)}
 .embed-bar .open svg{width:14px; height:14px}
@@ -94,14 +94,14 @@
    UNIFIED ECOSYSTEM — 4-up
    ============================================================ */
 .eco-grid{margin-top:clamp(46px,6vw,72px); display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,1.8vw,24px)}
-.eco-card{background:#fff; border:1px solid var(--line-l); border-radius:20px; padding:clamp(26px,2.4vw,34px);
+.eco-card{background:var(--card); border:1px solid var(--line-l); border-radius:20px; padding:clamp(26px,2.4vw,34px);
   transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s}
-.band.dark .eco-card{background:rgba(255,255,255,.045); border-color:var(--line-d)}
-.eco-card:hover{transform:translateY(-6px); box-shadow:0 34px 60px -38px rgba(13,36,48,.3); border-color:#d4dad3}
+.band.dark .eco-card{background:var(--card); border-color:var(--line-d)}
+.eco-card:hover{transform:translateY(-6px); box-shadow:0 34px 60px -38px rgba(13,36,48,.3); border-color:var(--line-2)}
 .band.dark .eco-card:hover{border-color:rgba(255,255,255,.22); box-shadow:0 34px 60px -34px rgba(0,0,0,.55)}
 .eco-card .ic-circle{margin-bottom:22px}
-.eco-card h3{font-size:clamp(1.18rem,1.6vw,1.36rem); font-weight:700; letter-spacing:-.018em; color:var(--ink)}
-.band.dark .eco-card h3{color:#fff}
+.eco-card h3{font-size:clamp(1.18rem,1.6vw,1.36rem); font-weight:700; letter-spacing:-.018em; color:var(--text)}
+.band.dark .eco-card h3{color:var(--text)}
 .eco-card p{margin-top:12px; font-size:1rem; line-height:1.58; color:var(--muted-l)}
 .band.dark .eco-card p{color:var(--muted-d)}
 
@@ -111,13 +111,13 @@
 .vision-grid{margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,2.4vw,32px);
   max-width:1000px; margin-inline:auto}
 .vision-item{display:flex; gap:18px; align-items:flex-start; padding:clamp(22px,2.2vw,30px);
-  background:#fff; border:1px solid var(--line-l); border-radius:18px; transition:transform .4s var(--ease), box-shadow .4s var(--ease)}
-.band.dark .vision-item{background:rgba(255,255,255,.045); border-color:var(--line-d)}
+  background:var(--card); border:1px solid var(--line-l); border-radius:18px; transition:transform .4s var(--ease), box-shadow .4s var(--ease)}
+.band.dark .vision-item{background:var(--card); border-color:var(--line-d)}
 .vision-item:hover{transform:translateY(-4px); box-shadow:0 28px 52px -38px rgba(13,36,48,.28)}
 .vision-item .dot{flex:none; width:14px; height:14px; border-radius:50%; background:var(--yellow); margin-top:7px;
   box-shadow:0 0 0 5px rgba(253,224,53,.16)}
-.vision-item h3{font-size:clamp(1.1rem,1.5vw,1.28rem); font-weight:700; letter-spacing:-.015em; color:var(--ink)}
-.band.dark .vision-item h3{color:#fff}
+.vision-item h3{font-size:clamp(1.1rem,1.5vw,1.28rem); font-weight:700; letter-spacing:-.015em; color:var(--text)}
+.band.dark .vision-item h3{color:var(--text)}
 .vision-item p{margin-top:9px; font-size:1.02rem; line-height:1.55; color:var(--muted-l)}
 .band.dark .vision-item p{color:var(--muted-d)}
 
@@ -125,36 +125,42 @@
    PET'S WORLD — 2x2 feature cards with bullet lists
    ============================================================ */
 .world-grid{margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(18px,2vw,26px)}
-.world-card{position:relative; overflow:hidden; background:#fff; border:1px solid var(--line-l); border-radius:22px;
+.world-card{position:relative; overflow:hidden; background:var(--card); border:1px solid var(--line-l); border-radius:22px;
   padding:clamp(28px,2.8vw,40px); transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s}
-.band.dark .world-card{background:rgba(255,255,255,.045); border-color:var(--line-d)}
+.band.dark .world-card{background:var(--card); border-color:var(--line-d)}
 .world-card::after{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--yellow);
   transform:scaleY(0); transform-origin:top; transition:transform .5s var(--ease)}
-.world-card:hover{transform:translateY(-5px); box-shadow:0 36px 64px -40px rgba(13,36,48,.3); border-color:#d4dad3}
+.world-card:hover{transform:translateY(-5px); box-shadow:0 36px 64px -40px rgba(13,36,48,.3); border-color:var(--line-2)}
 .world-card:hover::after{transform:scaleY(1)}
 .world-card .ic-circle{margin-bottom:22px}
-.world-card h4{font-size:clamp(1.3rem,1.9vw,1.6rem); font-weight:700; letter-spacing:-.02em; color:var(--ink)}
-.band.dark .world-card h4{color:#fff}
+.world-card h4{font-size:clamp(1.3rem,1.9vw,1.6rem); font-weight:700; letter-spacing:-.02em; color:var(--text)}
+.band.dark .world-card h4{color:var(--text)}
 .world-card .desc{margin-top:14px; font-size:1.04rem; line-height:1.62; color:var(--muted-l)}
 .band.dark .world-card .desc{color:var(--muted-d)}
 .world-card .tags{margin-top:24px; padding-top:22px; border-top:1px solid var(--line-l); display:flex; flex-direction:column; gap:13px}
 .band.dark .world-card .tags{border-color:var(--line-d)}
-.world-card .tags li{display:flex; align-items:center; gap:12px; font-size:.98rem; font-weight:500; color:#3a4b53}
+.world-card .tags li{display:flex; align-items:center; gap:12px; font-size:.98rem; font-weight:500; color:var(--text-muted)}
 .band.dark .world-card .tags li{color:var(--muted-d)}
 .world-card .tags li .tk{flex:none; width:8px; height:8px; border-radius:50%; background:var(--yellow)}
 
 /* ============================================================
    FAMILY MEMBERS — 3-up centered
    ============================================================ */
-.family-card{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(24px,3vw,48px); margin-top:clamp(40px,5vw,60px);
-  max-width:1000px; margin-inline:auto; padding:clamp(36px,4vw,56px); background:#fff;
+.family-card{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(24px,3vw,48px); margin-top:clamp(40px,5vw,60px);
+  max-width:820px; margin-inline:auto; padding:clamp(36px,4vw,56px); background:var(--card);
   border:1px solid var(--line-l); border-radius:24px; box-shadow:0 40px 80px -56px rgba(13,36,48,.3)}
-.band.dark .family-card{background:rgba(255,255,255,.045); border-color:var(--line-d)}
+.band.dark .family-card{background:var(--card); border-color:var(--line-d)}
 .family-col{text-align:center; display:flex; flex-direction:column; align-items:center}
 .family-col .ic-circle{width:70px; height:70px; margin-bottom:20px}
 .family-col .ic-circle svg{width:34px; height:34px}
-.family-col h4{font-size:clamp(1.2rem,1.7vw,1.4rem); font-weight:700; letter-spacing:-.018em; color:var(--ink)}
-.band.dark .family-col h4{color:#fff}
+.family-col .ic-circle.photo{width:110px; height:110px; overflow:hidden; padding:0; background:none; border:2px solid var(--yellow)}
+.family-col .ic-circle.photo img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block}
+/* zoom + center on each animal's face */
+.family-col .ic-circle.photo img[src*="family-dog"]{transform:scale(1.12); object-position:58% 32%}
+.family-col .ic-circle.photo img[src*="family-cat"]{transform:scale(1.12); object-position:40% 26%}
+.family-col .ic-circle.photo img[src*="family-other"]{transform:scale(1.5); object-position:42% 52%}
+.family-col h4{font-size:clamp(1.2rem,1.7vw,1.4rem); font-weight:700; letter-spacing:-.018em; color:var(--text)}
+.band.dark .family-col h4{color:var(--text)}
 .family-col p{margin-top:10px; font-size:1rem; line-height:1.55; color:var(--muted-l); max-width:24ch}
 .band.dark .family-col p{color:var(--muted-d)}
 
@@ -162,7 +168,7 @@
    SMART DEVICES — 3-up (dark section)
    ============================================================ */
 .dev-grid{margin-top:clamp(44px,5.5vw,72px); display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2vw,26px)}
-.dev-card{position:relative; overflow:hidden; background:rgba(255,255,255,.045); border:1px solid var(--line-d);
+.dev-card{position:relative; overflow:hidden; background:var(--card); border:1px solid var(--line-d);
   border-radius:22px; padding:clamp(28px,2.6vw,38px); transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s}
 .dev-card::before{content:""; position:absolute; inset:0; z-index:0; opacity:0;
   background:radial-gradient(120% 120% at 0% 0%, rgba(253,224,53,.1), transparent 58%); transition:opacity .5s var(--ease)}
@@ -177,15 +183,17 @@
 .dev-card .tags li .tk{flex:none; width:7px; height:7px; border-radius:50%; background:var(--yellow)}
 
 /* ============================================================
-   DAILY OBSERVATIONS — reuse .steps, constrain width
+   DAILY OBSERVATIONS — card boxes (matches Challenge/Solution)
    ============================================================ */
-.obs-wrap{max-width:880px; margin-inline:auto; margin-top:clamp(40px,5vw,60px)}
-.obs-wrap .steps .step{grid-template-columns:auto 1fr; align-items:flex-start}
-.obs-wrap .step .badge{width:clamp(46px,4vw,58px); height:clamp(46px,4vw,58px); border-radius:50%; flex:none;
-  display:grid; place-items:center; background:var(--yellow); color:var(--ink); font-size:1.3rem; font-weight:700}
-.obs-wrap .step h4{font-size:clamp(1.3rem,2vw,1.7rem); font-weight:700; letter-spacing:-.02em}
-.obs-wrap .step p{margin-top:10px; color:var(--muted-l); font-size:1.06rem; line-height:1.62; max-width:60ch}
-.band.dark .obs-wrap .step p{color:var(--muted-d)}
+.obs-wrap{max-width:none; margin-top:0}
+.obs-wrap .steps .step{display:block; text-align:left}
+.obs-wrap .step .badge{display:grid; place-items:center; width:clamp(46px,4vw,58px); height:clamp(46px,4vw,58px); border-radius:50%; flex:none;
+  background:var(--yellow); color:#0a1a22; font-size:1.3rem; font-weight:800; margin-bottom:18px}
+.obs-wrap .step h4{font-size:clamp(1.18rem,1.7vw,1.42rem); font-weight:700; letter-spacing:-.02em; color:var(--text)}
+.obs-wrap .step p{margin-top:12px; color:var(--text-muted); font-size:1.02rem; line-height:1.6; max-width:none}
+.band.dark .obs-wrap .step p{color:var(--text-muted)}
+
+/* superseded */
 
 /* ============================================================
    PRIVACY CLOSING — reuse .closing visual language (no media)
@@ -242,7 +250,7 @@
    OUR VISION — WHOOP-style vertical feature list
    ============================================================ */
 .vision-feature .vision-title{font-size:clamp(2rem,4.6vw,3.9rem); font-weight:500; letter-spacing:-.03em;
-  line-height:1.0; text-align:left; margin:0 0 clamp(40px,5vw,72px); text-wrap:balance; color:var(--ink)}
+  line-height:1.0; text-align:left; margin:0 0 clamp(40px,5vw,72px); text-wrap:balance; color:var(--text)}
 .vision-layout{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(40px,6vw,90px); align-items:center}
 .vision-list{display:flex; flex-direction:column}
 .vfeat{position:relative; display:flex; gap:20px; align-items:flex-start; width:100%; text-align:left;
@@ -253,13 +261,13 @@
 .vfeat.on .vbar{background:var(--yellow)}
 .vtext{display:flex; flex-direction:column; min-width:0}
 .vfeat .vh{font-size:clamp(1.35rem,2.3vw,1.95rem); font-weight:700; letter-spacing:-.022em; color:#9aa4a9; transition:color .4s var(--ease)}
-.vfeat.on .vh{color:var(--ink)}
+.vfeat.on .vh{color:var(--text)}
 .vfeat .vp{font-size:clamp(1rem,1.3vw,1.18rem); line-height:1.55; color:var(--muted-l); max-height:0; opacity:0; overflow:hidden;
   transition:max-height .55s var(--ease), opacity .4s var(--ease), margin-top .55s var(--ease)}
 .vfeat.on .vp{max-height:170px; opacity:1; margin-top:12px}
 
 .vision-media{position:relative; aspect-ratio:4/5; max-height:560px; border-radius:26px; overflow:hidden;
-  border:1px solid var(--line-l); background:linear-gradient(155deg,#e9ecee,#dfe4e6); box-shadow:0 44px 90px -56px rgba(13,36,48,.35)}
+  border:1px solid var(--line-l); background:var(--card-elev); box-shadow:0 44px 90px -56px rgba(13,36,48,.35)}
 .vision-img{position:absolute; inset:0; display:grid; place-items:center; opacity:0; color:rgba(13,36,48,.18);
   transition:opacity .6s var(--ease)}
 .vision-img.on{opacity:1}
@@ -299,16 +307,16 @@
 .dev-tab:last-child{border-bottom:1px solid var(--line-d)}
 .dev-tab::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px; background:transparent; transition:background .4s var(--ease)}
 .dev-tab.on::before{background:var(--yellow)}
-.dev-tab .dt-name{display:block; font-size:clamp(1.18rem,1.5vw,1.5rem); font-weight:700; letter-spacing:-.02em; color:rgba(255,255,255,.5); transition:color .4s var(--ease)}
-.dev-tab:hover .dt-name{color:rgba(255,255,255,.8)}
-.dev-tab.on .dt-name{color:#fff}
+.dev-tab .dt-name{display:block; font-size:clamp(1.18rem,1.5vw,1.5rem); font-weight:700; letter-spacing:-.02em; color:var(--text-dim); transition:color .4s var(--ease)}
+.dev-tab:hover .dt-name{color:var(--text-muted)}
+.dev-tab.on .dt-name{color:var(--text)}
 .dev-tab .dt-detail{display:block; max-height:0; opacity:0; overflow:hidden;
   transition:max-height .55s var(--ease), opacity .4s var(--ease), margin-top .55s var(--ease)}
 .dev-tab.on .dt-detail{max-height:260px; opacity:1; margin-top:12px}
 .dev-tab .desc{display:block; font-size:1.02rem; line-height:1.55; color:var(--muted-d)}
 .dev-tab .dtags{display:flex; flex-wrap:wrap; gap:9px; margin-top:16px}
-.dev-tab .dtag{display:inline-flex; align-items:center; gap:8px; font-size:.86rem; font-weight:500; color:rgba(255,255,255,.82);
-  padding:7px 13px; border-radius:999px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16)}
+.dev-tab .dtag{display:inline-flex; align-items:center; gap:8px; font-size:.86rem; font-weight:500; color:var(--text-muted);
+  padding:7px 13px; border-radius:999px; background:var(--card-elev); border:1px solid var(--line)}
 .dev-tab .dtag::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow)}
 
 @media (max-width:880px){
@@ -325,8 +333,8 @@
 /* ---- Flomad Smart Pet Devices: photo per device ---- */
 .dev-bg{background-size:cover; background-position:center}
 .dev-bg .dev-ph{display:none}
-.dev-bg[data-dev="collar"]{background-image:url(assets/pets/dev-collar.jpg)}
-.dev-bg[data-dev="feeder"]{background-image:url(assets/pets/dev-feeder.jpg)}
+.dev-bg[data-dev="collar"]{background-image:url(assets/pets/dev-collar.jpg); background-position:50% 18%}
+.dev-bg[data-dev="feeder"]{background-image:url(assets/pets/dev-feeder.jpg); background-position:50% 72%}
 .dev-bg[data-dev="water"]{background-image:url(assets/pets/dev-water.jpg)}
 .dev-bg[data-dev="litter"]{background-image:url(assets/pets/dev-litter.jpg)}
 .dev-bg[data-dev="calming"]{background-image:url(assets/pets/dev-calming.jpg)}
