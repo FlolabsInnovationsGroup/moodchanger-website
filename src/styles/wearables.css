@@ -1,0 +1,258 @@
+/* ============================================================
+   MoodChanger · Wearables — interactive showcase
+   A full-screen, auto-advancing carousel of all 12 wearables
+   (big image · big name · short intro), and a focused detail
+   view (same layout for every product) reached by clicking a
+   slide. Shares tokens / header / footer with athletes.css.
+   ============================================================ */
+
+/* NOTE (Next.js port): `body.wear-body`, `body.detail-open` and `.wear-body .site-footer`
+   target <body> / the shared footer, which live outside this page's scope wrapper.
+   They were hand-ported into app/globals.css as `body:has(.page-wear) …` rules. */
+
+/* per-wearable media placeholder (stands in for the product photo) */
+.page-wear .shot{position:absolute; inset:0; overflow:hidden; background:linear-gradient(155deg,#16384a 0%,#0d2733 52%,#081820 100%)}
+.page-wear .shot .kb{position:absolute; inset:-4%; display:grid; place-items:center; transform:scale(1.16); transition:transform 7s linear}
+.page-wear .shot .glow{position:absolute; inset:0;
+  background:radial-gradient(70% 60% at 70% 28%, rgba(253,224,53,.16), transparent 62%),
+             radial-gradient(80% 70% at 18% 88%, rgba(157,82,235,.14), transparent 60%)}
+.page-wear .shot.alt .glow{background:radial-gradient(70% 60% at 30% 26%, rgba(157,82,235,.18), transparent 62%),
+             radial-gradient(80% 70% at 82% 86%, rgba(253,224,53,.14), transparent 60%)}
+.page-wear .shot .grain{position:absolute; inset:0; color:rgba(255,255,255,.16);
+  background-image:radial-gradient(currentColor .9px, transparent 1.6px); background-size:11px 11px;
+  -webkit-mask-image:radial-gradient(120% 120% at 60% 30%, #000 0%, transparent 72%);
+          mask-image:radial-gradient(120% 120% at 60% 30%, #000 0%, transparent 72%)}
+.page-wear .shot .icon{color:rgba(255,255,255,.16)}
+.page-wear .shot .icon svg{width:min(38vw,360px); height:min(38vw,360px)}
+
+/* ============================================================
+   HERO SHOWCASE
+   ============================================================ */
+.page-wear .showcase{position:relative; height:100svh; min-height:600px; overflow:hidden; background:var(--ink); color:#fff}
+.page-wear .show-track{position:absolute; inset:0}
+.page-wear .show-slide{position:absolute; inset:0; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 1s var(--ease)}
+.page-wear .show-slide.active{opacity:1; visibility:visible; pointer-events:auto}
+.page-wear .show-slide.active .shot .kb{transform:scale(1)}
+.page-wear .show-slide .scrim{position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(8,20,28,.5) 0%, rgba(8,20,28,.05) 26%, rgba(8,20,28,.55) 68%, rgba(8,20,28,.92) 100%)}
+
+/* clickable content lockup, bottom-left */
+.page-wear .show-content{position:absolute; z-index:3; left:max(4vw,calc(50vw - var(--maxw)/2)); right:max(4vw,calc(50vw - var(--maxw)/2));
+  bottom:clamp(96px,13vh,150px); cursor:pointer}
+.page-wear .show-eyebrow{display:inline-flex; align-items:center; gap:11px; font-size:clamp(.92rem,1.4vw,1.18rem); font-weight:700; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--yellow); margin-bottom:20px}
+.page-wear .show-eyebrow .ix{color:rgba(255,255,255,.78); letter-spacing:.08em}
+.page-wear .show-eyebrow .bar{display:none}
+.page-wear .show-name{font-size:clamp(3rem,9vw,7.2rem); font-weight:600; letter-spacing:-.04em; line-height:.95; text-wrap:balance;
+  text-shadow:0 4px 40px rgba(5,16,22,.5); max-width:16ch}
+.page-wear .show-intro{margin-top:clamp(16px,2vh,24px); max-width:58ch; font-size:clamp(1.05rem,1.5vw,1.42rem); line-height:1.55;
+  color:rgba(255,255,255,.9); text-shadow:0 1px 16px rgba(5,16,22,.6)}
+.page-wear .show-intro .caipo{color:#c39bf2; font-weight:600}
+.page-wear .show-cta{margin-top:clamp(22px,3vh,32px); display:inline-flex; align-items:center; gap:12px; font-weight:600; font-size:1rem;
+  color:var(--ink); background:var(--yellow); padding:13px 22px; border-radius:999px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease)}
+.page-wear .show-content:hover .show-cta{transform:translateY(-2px); box-shadow:0 16px 34px -14px rgba(253,224,53,.7)}
+.page-wear .show-cta svg{width:16px; height:16px}
+
+/* per-slide entrance of the text */
+.page-wear .show-slide .show-eyebrow,.page-wear .show-slide .show-name,.page-wear .show-slide .show-intro,.page-wear .show-slide .show-cta{
+  opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .9s var(--ease)}
+.page-wear .show-slide.active .show-eyebrow{opacity:1; transform:none; transition-delay:.15s}
+.page-wear .show-slide.active .show-name{opacity:1; transform:none; transition-delay:.26s}
+.page-wear .show-slide.active .show-intro{opacity:1; transform:none; transition-delay:.4s}
+.page-wear .show-slide.active .show-cta{opacity:1; transform:none; transition-delay:.52s}
+
+/* controls cluster (bottom-right) */
+.page-wear .show-controls{position:absolute; z-index:4; right:max(4vw,calc(50vw - var(--maxw)/2)); bottom:clamp(96px,13vh,150px);
+  display:flex; align-items:center; gap:16px}
+.page-wear .sbtn{width:58px; height:58px; border-radius:50%; display:grid; place-items:center; cursor:pointer; background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.24); color:#fff; transition:.3s var(--ease)}
+.page-wear .sbtn:hover{background:rgba(255,255,255,.16); border-color:#fff}
+.page-wear .sbtn svg{width:20px; height:20px}
+.page-wear .sbtn.next{background:var(--yellow); border-color:var(--yellow); color:var(--ink)}
+.page-wear .sbtn.next:hover{transform:translateX(2px); box-shadow:0 14px 30px -14px rgba(253,224,53,.7)}
+
+/* thumbnail / progress strip along the very bottom */
+.page-wear .show-strip{display:none}
+.page-wear .show-strip .fill{position:absolute; left:0; top:0; bottom:0; width:0; background:var(--yellow)}
+.page-wear .show-dots{position:absolute; z-index:4; left:max(4vw,calc(50vw - var(--maxw)/2)); bottom:34px; display:flex; gap:8px}
+.page-wear .show-dots button{width:30px; height:4px; border-radius:3px; border:0; padding:0; cursor:pointer; background:rgba(255,255,255,.26); transition:.35s var(--ease)}
+.page-wear .show-dots button.on{background:var(--yellow); width:46px}
+
+/* ============================================================
+   DETAIL VIEW (same layout + background for every wearable)
+   ============================================================ */
+.page-wear .detail{position:fixed; inset:0; z-index:950; background:var(--surface); color:var(--text); overflow-y:auto; overscroll-behavior:contain;
+  transform:translateY(2.5%); opacity:0; visibility:hidden; pointer-events:none;
+  transition:transform .6s var(--ease), opacity .5s var(--ease), visibility .6s}
+.page-wear .detail.open{transform:none; opacity:1; visibility:visible; pointer-events:auto}
+
+.page-wear .detail-bar{position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:18px;
+  background:color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter:blur(18px) saturate(1.2); border-bottom:1px solid var(--line)}
+.page-wear .detail-bar .row{width:min(var(--maxw),92vw); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:15px 0}
+.page-wear .detail-close{display:inline-flex; align-items:center; gap:10px; cursor:pointer; background:transparent; border:0; font-family:inherit;
+  font-size:.94rem; font-weight:600; color:var(--text); padding:9px 12px; border-radius:10px; transition:background .25s}
+.page-wear .detail-close:hover{background:var(--surface-2)}
+.page-wear .detail-close svg{width:18px; height:18px}
+.page-wear .detail-bar .row{position:relative}
+.page-wear .detail-where{position:absolute; left:50%; transform:translateX(-50%); display:flex; align-items:baseline; gap:12px; min-width:0; justify-content:center; text-align:center}
+.page-wear .detail-where .ix{font-size:.82rem; font-weight:700; letter-spacing:.12em; color:var(--yellow)}
+.page-wear .detail-where .nm{font-size:1.04rem; font-weight:600; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.page-wear .detail-arrows{display:flex; align-items:center; gap:10px}
+.page-wear .dbtn{width:46px; height:46px; border-radius:50%; display:grid; place-items:center; cursor:pointer; background:var(--surface);
+  border:1px solid var(--line); color:var(--text); transition:.28s var(--ease)}
+.page-wear .dbtn:hover{border-color:var(--text); transform:translateY(-1px)}
+.page-wear .dbtn svg{width:18px; height:18px}
+.page-wear .dbtn.next{background:var(--chip-bg); border-color:var(--chip-bg); color:var(--chip-text)}
+.page-wear .dbtn.next:hover{background:var(--ink-2)}
+
+.page-wear .detail-stage{position:relative}
+.page-wear .detail-panel{display:none}
+.page-wear .detail-panel.active{display:block; animation:dpin .6s var(--ease) both}
+@keyframes dpin{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){.page-wear .detail-panel.active{animation:none}}
+
+/* detail hero band */
+.page-wear .dp-hero{position:relative; min-height:clamp(320px,46vh,520px); display:flex; align-items:flex-end; overflow:hidden; background:var(--ink); color:#fff}
+.page-wear .dp-hero .shot{position:absolute; inset:0}
+.page-wear .dp-hero .shot .kb{transform:scale(1.05)}
+.page-wear .dp-hero .scrim{position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(8,20,28,.3), rgba(8,20,28,.05) 38%, rgba(8,20,28,.55) 78%, rgba(8,20,28,.9))}
+.page-wear .dp-headtext{position:relative; z-index:2; width:min(var(--maxw),92vw); margin-inline:auto; padding:clamp(40px,6vw,72px) 0}
+.page-wear .dp-title{font-size:clamp(2.6rem,6.4vw,5rem); font-weight:600; letter-spacing:-.04em; line-height:.96; text-wrap:balance}
+.page-wear .dp-intro{margin-top:22px; max-width:none; font-size:clamp(1.08rem,1.5vw,1.4rem); line-height:1.6; color:rgba(255,255,255,.92)}
+.page-wear .dp-intro .caipo{color:#c39bf2; font-weight:600}
+
+.page-wear .dp-body{width:min(var(--maxw),92vw); margin-inline:auto; padding:clamp(54px,7vw,100px) 0 clamp(80px,10vw,130px)}
+
+/* reuse the MoodChanger beat, capability + application styles from before */
+/* ---- "+ MoodChanger" — free-flowing text, no frame; only the tagline is a dark pill ---- */
+.page-wear .wear-mc{position:relative; background:none; border:0; border-radius:0; padding:0; box-shadow:none; color:var(--text); overflow:visible}
+.page-wear .wear-mc::before{display:none}
+.page-wear .wear-mc .mc-grid{display:none}
+.page-wear .wear-mc-inner{position:relative; z-index:1; max-width:none}
+.page-wear .wear-mc-title{font-size:clamp(1.7rem,3.1vw,2.7rem); font-weight:600; letter-spacing:-.03em; line-height:1.04; color:var(--text)}
+.page-wear .wear-mc-title .plus{color:var(--yellow-txt)}
+.page-wear .wear-mc-body{margin-top:22px; font-size:clamp(1.1rem,1.5vw,1.34rem); line-height:1.6; color:var(--text-muted); font-weight:400}
+.page-wear .wear-mc-body .caipo{color:var(--caipo); font-weight:600}
+.page-wear .wear-tagline{margin-top:clamp(28px,3.4vw,40px); display:flex; align-items:center; gap:15px; width:100%;
+  padding:clamp(18px,2vw,24px) clamp(22px,2.4vw,30px); border-radius:18px; border:0;
+  background:var(--chip-bg); color:var(--chip-text); font-size:clamp(1.02rem,1.4vw,1.22rem); font-weight:600; line-height:1.4;
+  box-shadow:0 26px 54px -36px rgba(13,36,48,.45)}
+.page-wear .wear-tagline::before{content:""; flex:none; width:10px; height:10px; border-radius:50%; background:var(--yellow)}
+.page-wear .wear-tagline .ar{color:inherit; font-weight:700; padding:0 .3em; font-size:1.12em; line-height:1}
+.page-wear .wear-tagline .ans{color:var(--yellow); font-weight:700}
+
+/* section subtitles — bigger + bold */
+.page-wear .wear-block{margin-top:clamp(52px,6vw,88px)}
+.page-wear .block-head{display:flex; align-items:center; gap:22px; margin-bottom:clamp(26px,3vw,38px)}
+.page-wear .block-head .eyebrow{font-size:clamp(1.5rem,2.5vw,2.05rem); font-weight:700; letter-spacing:-.022em; text-transform:none; color:var(--text)}
+.page-wear .block-head .eyebrow::before{display:none}
+.page-wear .block-head .ln{flex:1; height:1px; background:var(--line-l)}
+
+/* ---- Core Capabilities — centered, larger icons, divided by vertical lines ---- */
+.page-wear .cap-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0}
+.page-wear .cap{position:relative; background:none; border:0; border-radius:0; box-shadow:none;
+  padding:6px clamp(26px,3vw,44px); text-align:center; display:flex; flex-direction:column; align-items:center}
+.page-wear .cap:first-child{padding-left:0}
+.page-wear .cap:last-child{padding-right:0}
+.page-wear .cap + .cap{border-left:1px solid var(--line-l)}
+.page-wear .cap::after{display:none}
+.page-wear .cap:hover{transform:none; box-shadow:none}
+.page-wear .cap .cap-mark{width:64px; height:64px; border-radius:18px; display:grid; place-items:center; margin:0 auto 22px;
+  background:rgba(253,224,53,.16); border:1px solid rgba(253,224,53,.34); color:var(--yellow-txt)}
+.page-wear .cap .cap-mark svg{width:32px; height:32px}
+.page-wear .cap h4{font-size:clamp(1.18rem,1.7vw,1.42rem); font-weight:700; letter-spacing:-.018em}
+.page-wear .cap p{margin-top:10px; font-size:1.02rem; line-height:1.55; color:var(--muted-l)}
+
+/* ---- Features & Applications — white boxes ---- */
+.page-wear .app-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(16px,2vw,24px)}
+.page-wear .app{position:relative; display:flex; gap:20px; align-items:flex-start; overflow:hidden;
+  background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:20px; padding:clamp(26px,2.6vw,36px);
+  box-shadow:0 18px 44px -34px rgba(13,36,48,.22);
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s}
+.page-wear .app:hover{transform:translateY(-5px); box-shadow:0 38px 66px -40px rgba(13,36,48,.3); border-color:#d4dad3}
+.page-wear .app-ic{position:relative; z-index:1; flex:none; width:52px; height:52px; border-radius:14px; display:grid; place-items:center;
+  background:rgba(253,224,53,.16); border:1px solid rgba(253,224,53,.34); color:var(--yellow-deep); transition:transform .45s var(--ease)}
+.page-wear .app:hover .app-ic{transform:translateY(-3px)}
+.page-wear .app-ic svg{width:25px; height:25px}
+.page-wear .app-txt{position:relative; z-index:1}
+.page-wear .app h4{font-size:clamp(1.18rem,1.7vw,1.45rem); font-weight:700; letter-spacing:-.02em; color:var(--text)}
+.page-wear .app p{margin-top:11px; font-size:1.02rem; line-height:1.6; color:var(--text)}
+
+/* smooth gradient blend from the showcase into the footer (no hard line) */
+.page-wear .showcase{ }
+.page-wear .showcase::after{content:""; position:absolute; left:0; right:0; bottom:0; z-index:2; pointer-events:none;
+  height:clamp(150px,22vh,260px); background:linear-gradient(180deg, transparent 0%, rgba(10,26,34,.55) 55%, var(--ink) 100%)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:980px){
+  .page-wear .cap-grid{grid-template-columns:1fr}
+  .page-wear .cap{padding:24px 0 !important}
+  .page-wear .cap:first-child{padding-top:0 !important}
+  .page-wear .cap + .cap{border-left:0; border-top:1px solid var(--line-l)}
+  .page-wear .app-grid{grid-template-columns:1fr}
+  .page-wear .show-controls{bottom:auto; top:max(96px,14vh); right:4vw}
+}
+@media (max-width:760px){
+  .page-wear .show-content{bottom:120px}
+  .page-wear .show-controls{gap:12px}
+  .page-wear .sbtn{width:50px; height:50px}
+  .page-wear .wear-mc{border-radius:20px}
+  .page-wear .detail-where .nm{display:none}
+}
+
+/* ============================================================
+   PRODUCT PHOTOGRAPHY — real images as showcase + detail-hero bg
+   Both .show-slide and .detail-panel carry data-w="<id>"; the
+   .shot lives inside. A real photo replaces the gradient and
+   hides the placeholder icon/glow/grain (the scrim still darkens
+   for text legibility).
+   ============================================================ */
+.page-wear [data-w="smart-glasses"] .shot,
+.page-wear [data-w="eeg-hardware"] .shot,
+.page-wear [data-w="smart-ring"] .shot,
+.page-wear [data-w="brain-monitor"] .shot,
+.page-wear [data-w="smart-foot-pods"] .shot,
+.page-wear [data-w="smart-insoles"] .shot,
+.page-wear [data-w="smart-watch"] .shot,
+.page-wear [data-w="exoskeleton"] .shot,
+.page-wear [data-w="smart-suit"] .shot,
+.page-wear [data-w="smart-gloves"] .shot,
+.page-wear [data-w="smart-shirt"] .shot,
+.page-wear [data-w="smart-posture-trainer"] .shot{
+  background:#08141c center/cover no-repeat;
+}
+.page-wear [data-w="smart-glasses"] .shot{background-image:url(/assets/wear/smart-glasses.webp)}
+.page-wear [data-w="eeg-hardware"] .shot{background-image:url(/assets/wear/eeg-hardware.webp)}
+.page-wear [data-w="smart-ring"] .shot{background-image:url(/assets/wear/smart-ring.webp)}
+.page-wear [data-w="brain-monitor"] .shot{background-image:url(/assets/wear/brain-monitor.webp)}
+.page-wear [data-w="smart-foot-pods"] .shot{background-image:url(/assets/wear/smart-foot-pods.webp)}
+.page-wear [data-w="smart-insoles"] .shot{background-image:url(/assets/wear/smart-insoles.webp)}
+.page-wear [data-w="smart-watch"] .shot{background-image:url(/assets/wear/smart-watch.webp)}
+.page-wear [data-w="smart-suit"] .shot{background-image:url(/assets/wear/smart-suit.webp)}
+.page-wear [data-w="exoskeleton"] .shot{background-image:url(/assets/wear/exoskeleton.webp)}
+.page-wear [data-w="smart-gloves"] .shot{background-image:url(/assets/wear/smart-gloves.webp)}
+.page-wear [data-w="smart-shirt"] .shot{background-image:url(/assets/wear/smart-shirt.webp)}
+.page-wear [data-w="smart-posture-trainer"] .shot{background-image:url(/assets/wear/smart-posture-trainer.webp); background-color:#e8eaec}
+/* posture-trainer photo is on white — darken a touch more under the text via its scrim handled globally */
+.page-wear [data-w="smart-glasses"] .shot > *,
+.page-wear [data-w="eeg-hardware"] .shot > *,
+.page-wear [data-w="smart-ring"] .shot > *,
+.page-wear [data-w="brain-monitor"] .shot > *,
+.page-wear [data-w="smart-foot-pods"] .shot > *,
+.page-wear [data-w="smart-insoles"] .shot > *,
+.page-wear [data-w="smart-watch"] .shot > *,
+.page-wear [data-w="exoskeleton"] .shot > *,
+.page-wear [data-w="smart-suit"] .shot > *,
+.page-wear [data-w="smart-gloves"] .shot > *,
+.page-wear [data-w="smart-shirt"] .shot > *,
+.page-wear [data-w="smart-posture-trainer"] .shot > *{display:none}
+
+/* subtle slow zoom on the active showcase photo */
+@media (prefers-reduced-motion:no-preference){
+  .page-wear .show-slide .shot{transform:scale(1.06); transition:transform 7s linear}
+  .page-wear .show-slide.active .shot{transform:scale(1)}
+}
