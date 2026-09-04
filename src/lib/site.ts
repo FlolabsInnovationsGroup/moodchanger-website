@@ -17,3 +17,15 @@ export const site = {
     reddit: "https://www.reddit.com/user/FloLabs_Innovations/",
   },
 } as const;
+
+/** Google Preferred Sources — domain-level only, never a path. */
+export const PREFERRED_SOURCE = {
+  domain: "moodchanger.ai",
+  brand: "MoodChanger",
+  publicationUrl: "https://moodchanger.ai/",
+  deeplink: `https://www.google.com/preferences/source?q=${encodeURIComponent("https://moodchanger.ai/")}`,
+  storageKey: "moodchanger.preferred-source.dismissed-at",
+  dismissMs: 30 * 24 * 60 * 60 * 1000,
+  showAfterMs: 10_000,
+  showAfterScrollPx: 320,
+} as const;

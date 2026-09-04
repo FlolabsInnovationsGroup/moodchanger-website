@@ -1,11 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { footerCompany, footerNav, footerProjects } from "@/lib/nav";
-import { site } from "@/lib/site";
-import { Facebook, Instagram, LinkedIn, Reddit, Send, TikTok, YouTube } from "@/components/icons";
+import { isPrivateRoute } from "@/lib/preferred-source";
+import { PREFERRED_SOURCE, site } from "@/lib/site";
+import { Facebook, GoogleG, Instagram, LinkedIn, Reddit, Send, TikTok, YouTube } from "@/components/icons";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const showPreferredSource = !isPrivateRoute(pathname);
+
   return (
     <footer className="site-footer mc-footer">
       <div className="wrap mcf-grid">
@@ -54,6 +59,18 @@ export default function Footer() {
               <Reddit />
             </a>
           </div>
+
+          {showPreferredSource ? (
+            <a
+              className="mcf-ps"
+              href={PREFERRED_SOURCE.deeplink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GoogleG />
+              Add as preferred source on Google
+            </a>
+          ) : null}
         </div>
 
         <nav className="mcf-col" aria-label="Footer navigation">
