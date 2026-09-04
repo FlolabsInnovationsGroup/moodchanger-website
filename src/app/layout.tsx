@@ -15,7 +15,6 @@ const schibsted = Schibsted_Grotesk({
   display: "swap",
 });
 
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
 
@@ -33,8 +32,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google:
-      "Bglamph4aFxfF4neiz_VpKV_QSFkFwCHsdR2D9GL60g",
+    google: "Bglamph4aFxfF4neiz_VpKV_QSFkFwCHsdR2D9GL60g",
   },
 
   openGraph: {
@@ -63,7 +61,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 /**
  * Sets `data-theme` before first paint so a dark-mode visitor never sees a
  * light flash.
@@ -72,18 +69,14 @@ const themeScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify
   THEME_KEY,
 )});document.documentElement.setAttribute('data-theme',(t==='dark'||t==='light')?t:'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       data-theme="light"
       className={schibsted.variable}
-      suppressHydrationWarning
-    >
-
+      suppressHydrationWarning>
       <head>
-
         {/* Google Tag Manager Header */}
         <script
           dangerouslySetInnerHTML={{
@@ -111,12 +104,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             `,
           }}
         />
-
       </head>
 
-
       <body id="top">
-
         {/* Google Tag Manager Body */}
         <noscript>
           <iframe
@@ -130,13 +120,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           />
         </noscript>
 
-
         <script
           dangerouslySetInnerHTML={{
             __html: themeScript,
           }}
         />
-
 
         <Header />
 
@@ -147,9 +135,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ToTop />
 
         <MotionLayer />
-
       </body>
-
     </html>
   );
 }
