@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "dependabot/npm_and_yarn/js-yaml-4.3.2",
+    "dependabot/npm_and_yarn/next-16.3.8",
+    "dependabot/npm_and_yarn/sharp-0.35.4",
+    "feature/strapi-integration",
+    "google-feature",
+    "main",
+    "ui-improvements-and-complete-pages",
+    "vercel/react-server-components-cve-vu-3g8eej"
+  ],
+  "parent": {
+    "dependabot/npm_and_yarn/js-yaml-4.3.2": "main",
+    "dependabot/npm_and_yarn/next-16.3.8": "main",
+    "dependabot/npm_and_yarn/sharp-0.35.4": "main",
+    "feature/strapi-integration": "main",
+    "google-feature": "main",
+    "main": null,
+    "ui-improvements-and-complete-pages": "main",
+    "vercel/react-server-components-cve-vu-3g8eej": "main"
+  },
+  "order": [
+    "main",
+    "dependabot/npm_and_yarn/js-yaml-4.3.2",
+    "dependabot/npm_and_yarn/next-16.3.8",
+    "dependabot/npm_and_yarn/sharp-0.35.4",
+    "feature/strapi-integration",
+    "google-feature",
+    "ui-improvements-and-complete-pages",
+    "vercel/react-server-components-cve-vu-3g8eej"
+  ]
+}
