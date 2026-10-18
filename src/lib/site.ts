@@ -24,8 +24,4 @@ export const PREFERRED_SOURCE = {
   brand: "MoodChanger",
   publicationUrl: "https://moodchanger.ai/",
   deeplink: `https://www.google.com/preferences/source?q=${encodeURIComponent("https://moodchanger.ai/")}`,
-  storageKey: "moodchanger.preferred-source.dismissed-at",
-  dismissMs: 30 * 24 * 60 * 60 * 1000,
-  showAfterMs: 10_000,
-  showAfterScrollPx: 320,
 } as const;

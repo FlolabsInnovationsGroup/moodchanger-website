@@ -112,6 +112,29 @@
 .page-home .sol h3{font-size:1.45rem; font-weight:700; letter-spacing:-.02em; color:var(--text)}
 .page-home .sol p{margin-top:13px; color:var(--text-muted); font-size:1.02rem; line-height:1.6}
 
+/* ---------- PURPOSE (shared-purpose statement, site ink + yellow) ---------- */
+.page-home .purpose{background:var(--ink); color:var(--on-dark);
+  padding:clamp(88px,11vw,148px) 0 clamp(72px,9vw,120px)}
+.page-home .purpose .wrap{width:min(980px,90vw)}
+.page-home .purpose-kicker{text-align:center; color:var(--yellow); font-size:.95rem; font-weight:500}
+.page-home .purpose-title{margin-top:18px; text-align:center; color:#fff;
+  font-size:clamp(2.15rem,4.4vw,3.55rem); font-weight:600; letter-spacing:-.03em; line-height:1.14}
+.page-home .purpose-cols{margin-top:clamp(64px,8vw,104px); display:grid; grid-template-columns:1fr 1fr;
+  column-gap:clamp(48px,7vw,108px); align-items:start}
+.page-home .purpose-cols h3{color:var(--yellow); font-size:1.12rem; font-weight:600; letter-spacing:-.015em}
+.page-home .purpose-lead{margin-top:18px; color:#fff; font-weight:700; font-size:1.02rem; line-height:1.45}
+.page-home .purpose-body{margin-top:22px; max-width:38ch; color:var(--on-dark-muted); font-size:.98rem; line-height:1.55}
+.page-home .purpose-vision{margin-top:18px; max-width:40ch; color:#fff; font-size:1.02rem; font-weight:500; line-height:1.5}
+.page-home .purpose-rule{margin-top:clamp(64px,8vw,108px); height:1px; background:var(--on-dark-line)}
+.page-home .purpose-foot{margin-top:clamp(28px,3.4vw,42px); display:grid; grid-template-columns:1fr 1fr;
+  column-gap:clamp(48px,7vw,108px); align-items:start}
+.page-home .purpose-statement{color:#fff; font-weight:700; font-size:1.02rem; line-height:1.45}
+.page-home .purpose-note{max-width:42ch; color:var(--on-dark-muted); font-size:.92rem; line-height:1.5}
+.page-home .purpose-note + .purpose-note{margin-top:12px}
+.page-home .purpose-link{display:inline-block; margin-top:22px; color:#fff; font-size:.98rem; font-weight:500;
+  text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+.page-home .purpose-link:hover{color:var(--yellow)}
+
 /* ---------- HOW IT WORKS (tabbed video: big screen + tabs below) ---------- */
 .page-home .how-stage{margin-top:clamp(48px,6vw,76px)}
 .page-home .how-screen{position:relative; width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
@@ -165,6 +188,7 @@
   .page-home .challenge-aside{position:static}
   .page-home #challenge .challenge-list{grid-template-columns:1fr 1fr}
   .page-home .solution-grid{grid-template-columns:1fr 1fr}
+  .page-home .purpose-cols, .page-home .purpose-foot{grid-template-columns:1fr; row-gap:36px}
   .page-home .how-tabs{grid-template-columns:1fr; gap:0}
   .page-home .how-tab{padding:20px 0; border-top:2px solid var(--line-2)}
   .page-home .how-tab.active{border-color:var(--yellow)}

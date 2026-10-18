@@ -6,7 +6,7 @@ import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import MotionLayer from "@/components/site/MotionLayer";
 import ToTop from "@/components/site/ToTop";
-import PreferredSourceChip from "@/components/site/PreferredSourceChip";
+import PreferredSourceBand from "@/components/site/PreferredSourceBand";
 import { THEME_KEY } from "@/lib/theme";
 
 const schibsted = Schibsted_Grotesk({
@@ -137,11 +137,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         {children}
 
+        <PreferredSourceBand />
+
         <Footer />
 
         <ToTop />
-
-        <PreferredSourceChip />
 
         <MotionLayer />
       </body>
