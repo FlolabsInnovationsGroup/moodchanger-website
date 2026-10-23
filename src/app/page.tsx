@@ -186,6 +186,71 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ----------------------------------------------------- PURPOSE */}
+        <section className="purpose" id="purpose" aria-labelledby="purpose-title">
+          <div className="wrap">
+            <p className="purpose-kicker reveal">Our shared purpose</p>
+            <h2 className="purpose-title reveal" data-delay="80" id="purpose-title">
+              Talent is everywhere.
+              <br />
+              Opportunity should be too.
+            </h2>
+
+            <div className="purpose-cols">
+              <div className="reveal" data-delay="120">
+                <h3>Mission</h3>
+                <p className="purpose-lead">
+                  Aspire to inspire
+                  <br />
+                  Help as many people as possible.
+                  <br />
+                  Live long and prosper.
+                </p>
+                <p className="purpose-body">
+                  At FloStudios, we bring this purpose to life through design, storytelling, and
+                  creative projects that help people learn, build, and turn ideas into useful
+                  experiences.
+                </p>
+              </div>
+              <div className="reveal" data-delay="180">
+                <h3>Vision</h3>
+                <p className="purpose-vision">
+                  A world where talent everywhere has access to experiential learning, frontier
+                  technologies, and meaningful opportunities to solve humanity’s greatest challenges
+                  and build a healthier, longer, and more prosperous future
+                </p>
+              </div>
+            </div>
+
+            <div className="purpose-rule reveal" data-delay="80" />
+
+            <div className="purpose-foot">
+              <p className="purpose-statement reveal" data-delay="100">
+                Real projects. Shared learning.
+                <br />
+                Room to grow
+              </p>
+              <div className="reveal" data-delay="160">
+                <p className="purpose-note">
+                  FloStudios is a creative learning division of FloLabs Innovations Group
+                </p>
+                <p className="purpose-note">
+                  Our teams build together across disciplines, developing their craft through work
+                  with a purpose.
+                </p>
+                <a
+                  className="purpose-link"
+                  href="https://www.flostudios.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Explore learning opportunities
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ------------------------------------------------ HOW IT WORKS */}
         <section className="band dark" id="how">
           <div className="wrap">

@@ -381,6 +381,36 @@ section{position:relative}
 .backhome svg,.to-top svg{width:15px; height:15px}
 
 /* ============================================================
+   GOOGLE PREFERRED SOURCE — footer control + closing band
+   ============================================================ */
+.mcf-ps{
+  display:inline-flex; align-items:center; gap:10px; width:fit-content; margin-top:18px;
+  padding:10px 14px; background:#3c4043; border:1px solid #5f6368; border-radius:4px;
+  color:#fff; font-size:.88rem; font-weight:500; line-height:1.3;
+  transition:background .2s var(--ease), border-color .2s var(--ease);
+}
+.mcf-ps svg{width:18px; height:18px; flex:none}
+.mcf-ps:hover{background:#4a4e51; border-color:#7a7e81; color:#fff}
+.mcf-ps:focus-visible{outline:2px solid var(--yellow,#FDE035); outline-offset:3px}
+
+.ps-band{
+  background:var(--ink); color:#eaecef; text-align:center;
+  padding:clamp(72px,10vw,120px) 24px;
+}
+.ps-band-inner{width:min(640px,90vw); margin-inline:auto; display:flex; flex-direction:column; align-items:center}
+.ps-band-rule{display:block; width:64px; height:3px; background:var(--yellow); margin:0 auto 28px; border-radius:2px}
+.ps-band h2{
+  margin:0; font-size:clamp(2rem,4.4vw,3.4rem); font-weight:500; letter-spacing:-.03em;
+  color:#fff; text-wrap:balance;
+}
+.ps-band p{
+  margin:18px 0 0; font-size:clamp(1.05rem,1.5vw,1.22rem); font-weight:500;
+  color:rgba(255,255,255,.72); line-height:1.5; max-width:42ch;
+}
+.ps-band em{color:var(--yellow); font-style:normal; font-weight:600}
+.ps-band-btn{margin-top:28px}
+
+/* ============================================================
    REVEAL UTILITIES
    ============================================================ */
 .reveal{opacity:0; transform:translateY(34px); transition:opacity 1s var(--ease), transform 1s var(--ease)}

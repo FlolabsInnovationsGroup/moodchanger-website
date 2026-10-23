@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
@@ -6,6 +6,7 @@ import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import MotionLayer from "@/components/site/MotionLayer";
 import ToTop from "@/components/site/ToTop";
+import PreferredSourceBand from "@/components/site/PreferredSourceBand";
 import { THEME_KEY } from "@/lib/theme";
 
 const schibsted = Schibsted_Grotesk({
@@ -59,6 +60,12 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 /**
@@ -129,6 +136,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
 
         {children}
+
+        <PreferredSourceBand />
 
         <Footer />
 
