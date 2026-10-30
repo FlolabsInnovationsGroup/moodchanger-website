@@ -20,7 +20,7 @@ jobs:
           echo "::error title=Force push detected::'${{ github.actor }}' force-pushed to ${{ github.ref_name }}. Force pushes are how PolinRider spreads. Check this branch and tell Mohamed."
           exit 1
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
 
@@ -28,8 +28,11 @@ jobs:
         shell: python3 {0}
         run: |
           import json, os, re, sys
-          IOC = [b'eth_getBlockByNumber', b'eth_getTransactionCount', b'X-Payload-B64', b'x-payload-b64',
-                 b"global['r']=require", b'global["r"]=require', b"global.i = '", b"global.i='", b"global['_V']", b'global["_V"]']
+          # Split strings so this file never matches its own patterns (or antivirus signatures).
+          J = lambda *parts: ''.join(parts).encode()
+          IOC = [J('eth_getBlock', 'ByNumber'), J('eth_getTransaction', 'Count'), J('X-Payload', '-B64'), J('x-payload', '-b64'),
+                 J("global['", "r']=require"), J('global["', 'r"]=require'), J("global.i", " = '"), J("global.i", "='"), J("global['", "_V']"), J('global["', '_V"]')]
+          SELF = '.github/workflows/security-scan.yml'
           CFG = re.compile(r'(^|/)((postcss|next|vite|tailwind|eslint|babel|webpack|nuxt|svelte|astro|jest|vitest|prettier)\.config\.(js|cjs|mjs|ts)|\.eslintrc\.(js|cjs))$')
           FONT = re.compile(r'\.(woff2?|eot|ttf|otf)$', re.I)
           MAGIC = {'.woff': [b'wOFF'], '.woff2': [b'wOF2'], '.ttf': [b'\x00\x01\x00\x00', b'true', b'OTTO'], '.otf': [b'OTTO', b'\x00\x01\x00\x00']}
@@ -44,6 +47,7 @@ jobs:
               dn[:] = [d for d in dn if d not in ('.git', 'node_modules')]
               for f in fn: files.append(os.path.normpath(os.path.join(dp, f)).replace(os.sep, '/'))
           for p in files:
+              if p == SELF: continue
               try:
                   if os.path.getsize(p) > 20_000_000: continue
                   b = open(p, 'rb').read()
